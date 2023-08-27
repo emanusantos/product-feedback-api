@@ -19,10 +19,10 @@ public class Feedback {
     private String status;
     private String description;
 
-    @OneToMany()
+    @OneToMany
     private List<Comment> comments;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private FeedbackUser user;
     public Feedback(

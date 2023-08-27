@@ -2,6 +2,7 @@ package com.emanusantos.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -14,11 +15,14 @@ public class Comment {
     private UUID id;
     private String content;
 
-    @ManyToOne()
+    @OneToMany
+    private List<Reply> replies;
+
+    @ManyToOne
     @JoinColumn(name = "feedback_id")
     private Feedback feedback;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private FeedbackUser user;
 

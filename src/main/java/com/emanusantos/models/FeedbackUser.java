@@ -17,10 +17,10 @@ public class FeedbackUser {
     private String username;
     private String image;
 
-    @OneToMany()
+    @OneToMany
     private List<Comment> comments;
 
-    @OneToMany()
+    @OneToMany
     private List<Feedback> feedbacks;
 
     public FeedbackUser(UUID id, String name, String username, String image) {
