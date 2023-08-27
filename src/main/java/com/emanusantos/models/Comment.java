@@ -26,9 +26,11 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private FeedbackUser user;
 
-    public Comment(UUID id, String content) {
+    public Comment(UUID id, String content, Feedback feedback, FeedbackUser user) {
         this.id = id;
         this.content = content;
+        this.feedback = feedback;
+        this.user = user;
     }
 
     public Comment() {
@@ -48,6 +50,22 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
+    public FeedbackUser getUser() {
+        return user;
+    }
+
+    public void setUser(FeedbackUser user) {
+        this.user = user;
     }
 
     @Override

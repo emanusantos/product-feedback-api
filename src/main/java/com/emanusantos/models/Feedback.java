@@ -31,7 +31,8 @@ public class Feedback {
             String category,
             Integer upvotes,
             String status,
-            String description
+            String description,
+            FeedbackUser user
     ) {
         this.id = id;
         this.title = title;
@@ -39,6 +40,7 @@ public class Feedback {
         this.upvotes = upvotes;
         this.status = status;
         this.description = description;
+        this.user = user;
     }
 
     public Feedback() {
@@ -90,6 +92,14 @@ public class Feedback {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public FeedbackUser getUser() {
+        return user;
+    }
+
+    public void setUser(FeedbackUser user) {
+        this.user = user;
     }
 
     @Override
