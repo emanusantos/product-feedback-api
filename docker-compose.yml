@@ -7,6 +7,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - db:/data/postgres
     ports:
       - "5332:5432"
@@ -20,3 +21,4 @@ networks:
 
 volumes:
   db:
+    driver: local
