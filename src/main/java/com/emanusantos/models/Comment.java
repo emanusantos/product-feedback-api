@@ -1,12 +1,11 @@
 package com.emanusantos.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Comment {
     @Id
     @GeneratedValue(
@@ -14,6 +13,14 @@ public class Comment {
     )
     private UUID id;
     private String content;
+
+    @ManyToOne()
+    @JoinColumn(name = "feedback_id")
+    private Feedback feedback;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private FeedbackUser user;
 
     public Comment(UUID id, String content) {
         this.id = id;

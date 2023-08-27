@@ -1,10 +1,8 @@
 package com.emanusantos.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -21,8 +19,12 @@ public class Feedback {
     private String status;
     private String description;
 
+    @OneToMany()
+    private List<Comment> comments;
 
-
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private FeedbackUser user;
     public Feedback(
             UUID id,
             String title,

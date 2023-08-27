@@ -1,13 +1,13 @@
 package com.emanusantos.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class User {
+@Entity
+public class FeedbackUser {
     @Id
     @GeneratedValue(
             strategy = GenerationType.UUID
@@ -17,14 +17,20 @@ public class User {
     private String username;
     private String image;
 
-    public User(UUID id, String name, String username, String image) {
+    @OneToMany()
+    private List<Comment> comments;
+
+    @OneToMany()
+    private List<Feedback> feedbacks;
+
+    public FeedbackUser(UUID id, String name, String username, String image) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.image = image;
     }
 
-    public User() {
+    public FeedbackUser() {
     }
 
     public UUID getId() {
@@ -63,7 +69,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        FeedbackUser user = (FeedbackUser) o;
         return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(username, user.username) && Objects.equals(image, user.image);
     }
 
@@ -74,7 +80,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "FeedbackUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", username='" + username + '\'' +
