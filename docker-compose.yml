@@ -15,6 +15,18 @@ services:
       - db
     restart: unless-stopped
 
+  pgadmin:
+    env_file:
+      - .env
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    ports:
+      - 16543:80
+    depends_on:
+      - db
+    networks:
+      - db
+
 networks:
   db:
     driver: bridge
