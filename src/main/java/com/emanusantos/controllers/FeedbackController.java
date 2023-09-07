@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path = "feedback")
 public class FeedbackController {
 
@@ -29,4 +32,7 @@ public class FeedbackController {
     public List<Feedback> findAll() {
         return feedbackService.findAllFeedbacks();
     }
+
+    @GetMapping("{feedbackId}")
+    public Optional<Feedback> findOne(@PathVariable("feedbackId") UUID feedbackId) { return feedbackService.findOneFeedback(feedbackId); }
 }
