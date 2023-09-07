@@ -1,6 +1,7 @@
 package com.emanusantos.controllers;
 
 import com.emanusantos.dtos.CreateFeedbackDto;
+import com.emanusantos.dtos.EditFeedbackDto;
 import com.emanusantos.models.Feedback;
 import com.emanusantos.services.FeedbackService;
 import jakarta.validation.Valid;
@@ -34,5 +35,15 @@ public class FeedbackController {
     }
 
     @GetMapping("{feedbackId}")
-    public Optional<Feedback> findOne(@PathVariable("feedbackId") UUID feedbackId) { return feedbackService.findOneFeedback(feedbackId); }
+    public Optional<Feedback> findOne(@PathVariable("feedbackId") UUID feedbackId) {
+        return feedbackService.findOneFeedback(feedbackId);
+    }
+
+    @PutMapping("{feedbackId}")
+    public void editFeedback(
+            @PathVariable("feedbackId") UUID feedbackId,
+            @RequestBody EditFeedbackDto dto
+    ) {
+        feedbackService.editFeedback(feedbackId, dto);
+    }
 }
